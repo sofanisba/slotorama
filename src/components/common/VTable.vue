@@ -5,11 +5,14 @@
     </header>
     <table>
       <tr>
-        <th v-for="name in Object.keys(list[0])">
+        <th v-for="name in Object.keys(list[0])" :key="name">
           {{ name }}
         </th>
       </tr>
-      <slot />
+
+      <tr v-for="item in list" :key="item">
+        <slot :item="item"/>
+      </tr>
     </table>
   </div>
 </template>

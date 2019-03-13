@@ -20,7 +20,7 @@
         Show {{ simpleExample ? 'More Interesting' : 'Simple' }} Example
       </v-button>
 
-      <div v-if="simpleExample" id="simple-example">
+      <div v-if="simpleExample" class="example">
         <v-card v-slot="slotProps">
           <div>I'm rendered from a <i>parent</i></div>
           <!-- slotProps is a safe default since there is only one slot prop in the child -->
@@ -60,15 +60,24 @@
           <a @click="toggleDynamic">Toggle dynamic slot name</a>
         </v-card>
       </div>
-      <v-table v-else
-        :list="sailorSenshi"
-        table-name="Sailor Scouts"
-      >
-      <tr v-for="sailor in sailorSenshi">
-        <td>{{ sailor.name }}</td>
-        <td><img :src="sailor.img"/></td>
-      </tr>
-      </v-table>
+
+      <div v-else class="example">
+        <v-table
+          :list="sailorSenshi"
+          table-name="Sailor Scouts"
+          v-slot="{ item }"
+        >
+          <td>{{ item.name }}</td>
+          <td><img :src="item.img"/></td>
+        </v-table>
+
+        <v-table :list="groceryList" table-name="Groceries">
+          <template v-slot:default="{item}">
+            <td>{{ item.thing }}</td>
+            <td>({{ item.amount}})</td>
+          </template>
+        </v-table>
+      </div>
     </div>
 
     <v-button @click.native="toggleExample">Toggle Example</v-button>
@@ -83,7 +92,7 @@ import VCard from './common/VCard'
 export default {
   name: 'scoped-slots',
   components: { VTitle, VButton, VTable, VCard },
-  data() {
+  data () {
     return {
       showExample: false,
       simpleExample: true,
@@ -121,7 +130,7 @@ export default {
     }
   },
   methods: {
-    toggleExample() {
+    toggleExample () {
       this.showExample = !this.showExample
     },
     toggleDynamic () {
@@ -148,7 +157,7 @@ a {
   justify-content: center;
 }
 
-#simple-example {
+.example {
   display: flex;
   flex-direction: row;
 }

@@ -15,11 +15,6 @@
   </div>
 </template>
 
-<script>
-export default {
-}
-</script>
-
 <style lang="css" scoped>
 .v-card {
   min-height: 400px;
