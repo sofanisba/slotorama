@@ -1,20 +1,22 @@
 <template>
   <div id="app">
-    <component :is="activeComponent" />
+    <component :is="activeComponent" class="active"/>
   </div>
 </template>
 
 <script>
 import WhatVue from './components/WhatVue'
+import WhatSlots from './components/WhatSlots'
 export default {
   name: 'app',
   components: {
-    WhatVue
+    WhatVue,
+    WhatSlots
   },
 
   computed: {
     activeComponent () {
-      return 'what-vue'
+      return 'what-slots'
     }
   }
 }
@@ -24,6 +26,7 @@ export default {
 body {
   background-color: antiquewhite;
 }
+
 #app {
   height: 100vh;
   display: flex;
@@ -32,5 +35,12 @@ body {
   color: #246352;
   font-size: 20px;
   line-height: 2;
+}
+
+.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
