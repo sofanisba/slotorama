@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="v-card">
     <div class="header">
-      A Header
+      <slot name="header" />
     </div>
 
     <div class="content">
@@ -9,7 +9,7 @@
     </div>
 
     <div class="footer">
-      A Footer
+      <slot name="footer" />
     </div>
   </div>
 </template>
@@ -35,6 +35,7 @@ export default {
   background-color: coral;
   text-align: center;
   color: white;
+  min-height: 50px;
 }
 
 .content {
