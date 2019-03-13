@@ -7,16 +7,18 @@
 <script>
 import WhatVue from './components/WhatVue'
 import WhatSlots from './components/WhatSlots'
+import ScopedSlots from './components/ScopedSlots'
 export default {
   name: 'app',
   components: {
     WhatVue,
-    WhatSlots
+    WhatSlots,
+    ScopedSlots
   },
 
   computed: {
     activeComponent () {
-      return 'what-slots'
+      return 'scoped-slots'
     }
   }
 }

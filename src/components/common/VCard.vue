@@ -5,7 +5,8 @@
     </div>
 
     <div class="content">
-      <slot />
+      <!-- A <slot> outlet without name implicitly has the name “default”. -->
+      <slot example="Whassap I'm a child"/>
     </div>
 
     <div class="footer">
@@ -21,7 +22,7 @@ export default {
 
 <style lang="css" scoped>
 .v-card {
-  height: 400px;
+  min-height: 400px;
   width: 300px;
   background-color: white;
   border: 1px solid lightgrey;
@@ -29,6 +30,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 5px 0;
 }
 
 .header {
